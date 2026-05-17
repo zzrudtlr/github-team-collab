@@ -1,0 +1,264 @@
+/* 대시보드 스타일 */
+
+.dashboard {
+  padding: 20px;
+  background: #f5f7fa;
+  min-height: 100vh;
+}
+
+.dashboard.dark {
+  background: #1e1e1e;
+}
+
+/* 헤더 */
+.dashboard__header {
+  margin-bottom: 30px;
+}
+
+.dashboard__title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 8px 0;
+}
+
+.dashboard.dark .dashboard__title {
+  color: #ecf0f1;
+}
+
+.dashboard__subtitle {
+  color: #7f8c8d;
+  font-size: 14px;
+  margin: 0;
+}
+
+.dashboard.dark .dashboard__subtitle {
+  color: #bdc3c7;
+}
+
+/* 도구 모음 */
+.dashboard__toolbar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.dashboard__btn {
+  padding: 8px 16px;
+  border: 1px solid #ecf0f1;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.dashboard.dark .dashboard__btn {
+  background: #2d2d2d;
+  border-color: #3d3d3d;
+  color: #ecf0f1;
+}
+
+.dashboard__btn:hover {
+  background: #f8f9fa;
+  border-color: #bdc3c7;
+}
+
+.dashboard.dark .dashboard__btn:hover {
+  background: #3d3d3d;
+}
+
+/* 위젯 컨테이너 */
+.dashboard__widgets {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.dashboard__widgets.list {
+  grid-template-columns: 1fr;
+}
+
+.dashboard__widgets.columns {
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+/* 위젯 */
+.widget {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard.dark .widget {
+  background: #2d2d2d;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.widget:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.dashboard.dark .widget:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.widget.large {
+  grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+  .widget.large {
+    grid-column: span 1;
+  }
+}
+
+/* 위젯 헤더 */
+.widget__header {
+  padding: 16px;
+  border-bottom: 1px solid #ecf0f1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard.dark .widget__header {
+  border-bottom-color: #3d3d3d;
+}
+
+.widget__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.dashboard.dark .widget__title {
+  color: #ecf0f1;
+}
+
+.widget__actions {
+  display: flex;
+  gap: 8px;
+}
+
+.widget__action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  color: #95a5a6;
+  font-size: 16px;
+  transition: color 0.2s;
+}
+
+.widget__action-btn:hover {
+  color: #3498db;
+}
+
+/* 위젯 본문 */
+.widget__content {
+  padding: 16px;
+  flex: 1;
+  overflow-y: auto;
+  max-height: 400px;
+}
+
+.dashboard.dark .widget__content {
+  color: #ecf0f1;
+}
+
+.widget__content p {
+  margin: 0;
+  color: #7f8c8d;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.dashboard.dark .widget__content p {
+  color: #bdc3c7;
+}
+
+/* 위젯 푸터 */
+.widget__footer {
+  padding: 12px 16px;
+  background: #f8f9fa;
+  border-top: 1px solid #ecf0f1;
+  font-size: 12px;
+  color: #95a5a6;
+  text-align: right;
+}
+
+.dashboard.dark .widget__footer {
+  background: #1e1e1e;
+  border-top-color: #3d3d3d;
+  color: #7f8c8d;
+}
+
+/* 로딩 상태 */
+.widget.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* 빈 상태 */
+.dashboard__empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #95a5a6;
+}
+
+.dashboard__empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.dashboard__empty-text {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.dashboard__empty-hint {
+  font-size: 14px;
+  color: #bdc3c7;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 12px;
+  }
+
+  .dashboard__widgets {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .widget {
+    border-radius: 4px;
+  }
+
+  .widget__content {
+    max-height: 300px;
+  }
+}
