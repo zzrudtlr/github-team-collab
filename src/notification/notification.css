@@ -1,0 +1,269 @@
+/* 알림 UI 스타일 */
+
+/* 알림 컨테이너 */
+.notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  max-width: 400px;
+}
+
+/* 개별 알림 */
+.notification {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  animation: slideInRight 0.3s ease-out;
+  border-left: 4px solid #ccc;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* 알림 타입별 스타일 */
+.notification.info {
+  border-left-color: #3498db;
+}
+
+.notification.success {
+  border-left-color: #27ae60;
+}
+
+.notification.warning {
+  border-left-color: #f39c12;
+}
+
+.notification.error {
+  border-left-color: #e74c3c;
+}
+
+/* 알림 아이콘 */
+.notification__icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 14px;
+}
+
+.notification.info .notification__icon {
+  background: #d6eaf8;
+  color: #3498db;
+}
+
+.notification.success .notification__icon {
+  background: #d5f4e6;
+  color: #27ae60;
+}
+
+.notification.warning .notification__icon {
+  background: #fef5e7;
+  color: #f39c12;
+}
+
+.notification.error .notification__icon {
+  background: #fadbd8;
+  color: #e74c3c;
+}
+
+/* 알림 내용 */
+.notification__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.notification__title {
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 4px 0;
+  font-size: 14px;
+}
+
+.notification__message {
+  color: #7f8c8d;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.notification__timestamp {
+  font-size: 11px;
+  color: #95a5a6;
+  margin-top: 4px;
+}
+
+/* 알림 닫기 버튼 */
+.notification__close {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #95a5a6;
+  font-size: 20px;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.notification__close:hover {
+  color: #7f8c8d;
+}
+
+/* 알림 센터 (토글) */
+.notification-center {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+.notification-center.open {
+  display: flex;
+}
+
+.notification-center__panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100%;
+  background: white;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  animation: slideInLeft 0.3s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.notification-center__header {
+  padding: 16px;
+  border-bottom: 1px solid #ecf0f1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notification-center__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.notification-center__close {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 20px;
+  color: #95a5a6;
+}
+
+.notification-center__list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.notification-center__item {
+  padding: 12px;
+  border-bottom: 1px solid #ecf0f1;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.notification-center__item:hover {
+  background: #f8f9fa;
+}
+
+.notification-center__item.unread {
+  background: #f0f7ff;
+}
+
+.notification-center__footer {
+  padding: 12px;
+  border-top: 1px solid #ecf0f1;
+  display: flex;
+  gap: 8px;
+}
+
+.notification-center__btn {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ecf0f1;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+
+.notification-center__btn:hover {
+  background: #f8f9fa;
+  border-color: #bdc3c7;
+}
+
+/* 배지 (알림 카운트) */
+.notification-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #e74c3c;
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* 반응형 */
+@media (max-width: 480px) {
+  .notification-container {
+    left: 10px;
+    right: 10px;
+    max-width: none;
+  }
+
+  .notification-center__panel {
+    width: 100%;
+  }
+
+  .notification {
+    margin-bottom: 8px;
+    padding: 12px;
+  }
+}
